@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ko">
+
+<%include ./include/head%>
+
+<body>
+
+<div class="signwrap">
+  <div class="contents">
+    <div class="signbox">
+      <div class="signcard">
+        <div class="logobox mb-20 pt-20 pb-20">
+          <a href="/"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div class="inputbox">
+          <select class="select" name="" onchange="langChange(this)">
+            <option value="">언어선택</option>
+            <option value="0">한국어</option>
+            <option value="1">English</option>
+            <option value="2">汉语</option>
+            <option value="3">日本語</option>
+          </select>
+        </div>
+        <div class="inputbox">
+          <input type="text" class="input" name="" value="" id="inUser_ID" placeholder="ID">
+        </div>
+        <div class="inputbox">
+          <input type="password" class="input" name="" value="" id="inUser_Pwd" placeholder="Password" onkeyup="enterkey()">
+        </div>
+        <div class="inputbox mt-10 mb-10">
+          <label for=""><input type="checkbox" class="check" name="" value=""> <%=LANG['LANG01']%></label>
+        </div>
+        <a class="btn btn-block btn-primary btn-radius mb-10" onclick="signin()"><%=LANG['LANG03']%></a>
+        <a href="signup" class="btn btn-block btn-white btn-radius mb-10"><%=LANG['LANG02']%></a>
+        <!-- <a href="findpass" class="btn btn-block btn-lightgrey btn-radius mb-10"><%=LANG['LANG04']%></a> -->
+        <hr class="hr">
+        <!-- <a class="btn btn-block btn-primary btn-radius mb-10 btn-order">주문서 작성</a> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="order">
+    <div id="orderbox">
+      <div id="orderinbox">
+        <div class="appmenutitle">
+          <h4 class="tx-c">주문서작성</h4>
+          <a class="close"><i class="fas fa-times"></i></a>
+        </div>
+        <div class="contbox">
+          <div class="inputbox">
+            <input type="number" class="input" name="" value="" placeholder="주문자명">
+          </div>
+          <div class="inputbox phoneinputbox mb-10">
+            <div class="row">
+              <div class="w20p left">
+                <select class="select" name="">
+                  <option value="">국가</option>
+                  <option value="">한국(+82)</option>
+                  <option value="">中国(+86)</option>
+                  <option value="">日本(+81)</option>
+                  <option value="">UNITED STATES(+1)</option>
+                </select>
+              </div>
+              <div class="w80p left">
+                <div class="inputbox">
+                  <input type="number" class="input" name="" value="" placeholder="phone number">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="orderproduct">
+            <div class="graytitle">
+              <h5>주문상품</h5>
+            </div>
+            <div class="productbox">
+              <div class="row mrow">
+                <div class="w20p left">
+                  <div class="imgbox">
+                    <img src="img/product1.jpg" alt="">
+                  </div>
+                </div>
+                <div class="w80p left">
+                  <div class="producttext">
+                    <div class="w33p">
+                      <p>커피</p>
+                    </div>
+                    <div class="w33p">
+                      <input type="number" class="input" name="" value="0" style="width: 50px;"> 개
+                    </div>
+                    <div class="w33p tx-r">
+                      <p>단가  10,000 원</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="productbox">
+              <div class="row mrow">
+                <div class="w20p left">
+                  <div class="imgbox">
+                    <img src="img/product2.jpg" alt="">
+                  </div>
+                </div>
+                <div class="w80p left">
+                  <div class="producttext">
+                    <div class="w33p">
+                      <p>생수</p>
+                    </div>
+                    <div class="w33p">
+                      <input type="number" class="input" name="" value="0" style="width: 50px;"> 개
+                    </div>
+                    <div class="w33p tx-r">
+                      <p>단가  10,000 원</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mrow mt-20">
+            <div class="w20p left">
+              <label for="">합계</label>
+            </div>
+            <div class="w80p left">
+              <div class="inputbox">
+                <input type="number" class="input" name="" value="" placeholder="" readonly>
+              </div>
+            </div>
+            <div class="w80p right">
+              <div class="inputbox">
+                <input type="number" class="input" name="" value="" placeholder="사용자입력">
+              </div>
+            </div>
+          </div>
+          <div class="row mrow mt-20">
+            <div class="w20p left">
+              <label for="">결제계좌</label>
+            </div>
+            <div class="w80p left">
+              <div class="inputbox">
+                <input type="text" class="input" name="" value="기업(서포터즈협동조합 110-343-3213)" placeholder="" readonly>
+              </div>
+            </div>
+          </div>
+
+          <div class="delivery">
+            <div class="graytitle">
+              <h5>배송정보</h5>
+            </div>
+            <div class="row mrow mt-20">
+              <div class="w20p left">
+                <label for="">받는분</label>
+              </div>
+              <div class="w80p left">
+                <div class="inputbox">
+                  <input type="text" class="input" name="" value="" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="row mrow mt-20">
+              <div class="w20p left">
+                <label for="">주소</label>
+              </div>
+              <div class="w80p left">
+                <div class="inputbtnbox mb-10">
+                  <input type="text" class="input" name="" value="" placeholder="">
+                  <a href="#" class="btn btn-primary">주소찾기</a>
+                </div>
+              </div>
+              <div class="w80p right">
+                <div class="inputbox">
+                  <input type="text" class="input" name="" value="" placeholder="">
+                </div>
+              </div>
+              <div class="w80p right">
+                <div class="inputbox">
+                  <input type="text" class="input" name="" value="" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mrow mt-20">
+            <div class="w50p left">
+              <a class="btn btn-block btn-lightgrey btn-radius">취소</a>
+            </div>
+            <div class="w50p left">
+              <a class="btn btn-block btn-primary btn-radius mb-10">작성</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+
+</body>
+
+
+</html>
+
+
+<script src="include/js/cur.js"></script>
+<script>
+  function langChange(val){
+    if($(val).val()){
+      api.langChange($(val).val())
+    }
+  }
+   function enterkey() {
+    if (window.event.keyCode == 13) {
+        signin()
+      }
+  }
+  async function signin() {
+    const param = {}
+    param["inUser_ID"] = $("#inUser_ID").val()
+    param["inUser_Pwd"] = $("#inUser_Pwd").val()
+
+    if (commonLib.nullCheck(param)) {
+      alert("<%=LANG['LANG05']%>")
+      return
+    }
+
+    const r = await api.userApi("/signin", param)
+
+    if (r.data.RESULT === "Y") {
+      console.table(r);
+      location.href = "/main"
+    } else {
+      alert("<%=LANG['LANG06']%>")
+    }
+  }
+
+</script>

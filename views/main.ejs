@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%include ./include/head%>
+
+  <body>
+    <div class="wrap">
+      <%include ./include/leftbox%>
+      <div class="rightbox">
+        <%include ./include/header%>
+
+        <div class="content">
+          <div class="card imgbackcard bg1">
+            <div class="mainprofile tx-w">
+              <p><span>ID :</span> <b id="D_UID"></b></p>
+              <p><span>지급총액 : </span> <b id="D_ALLAMT_TEXT"></b></p>
+              <p><span>지급비율 : </span> <b id="D_RATE_TEX"></b>%</p>
+            </div>
+          </div>
+
+          <div class="row mrow miangcard">
+            <div class="w25p left">
+              <div class="card gradientbg1">
+                <p>나의 출자금</p>
+                <h3 class="tx-r mt-20" id="MY_CHULJA_TEXT"><span>KRW</span></h3>
+              </div>
+            </div>
+            <div class="w25p left">
+              <div class="card gradientbg2">
+                <p>전체배당보너스</p>
+                <h3 class="tx-r mt-20" id="MS_BS1_TEXT"><span>KRW</span></h3>
+              </div>
+            </div>
+            <div class="w25p left">
+              <div class="card gradientbg3">
+                <p>추천보너스</p>
+                <h3 class="tx-r mt-20" id="MS_BS2_TEXT"><span>KRW</span></h3>
+              </div>
+            </div>
+            <div class="w25p left">
+              <div class="card gradientbg4">
+                <p>지점보너스</p>
+                <h3 class="tx-r mt-20" id="MS_BS3_TEXT">
+                  <span>KRW</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mrow">
+            <div class="w50p left">
+              <div class="card">
+                <div class="title">
+                  <h5>좌측실적</h5>
+                </div>
+                <div class="cont">
+                  <div class="tablebox">
+                    <div class="theadbox">
+                      <div class="d-flex">
+                        <div class="th w10p">No.</div>
+                        <div class="th w30p">매출일</div>
+                        <div class="th w20p">매출자</div>
+                        <div class="th w20p">PV</div>
+                        <div class="th w20p">적용일</div>
+                      </div>
+                    </div>
+                    <div class="tbodybox" id="Left_Siljuk">
+                      <!-- <div class="d-flex tr">
+                        <div class="td w10p">
+                          <span>No.</span><span>1</span>
+                        </div>
+                        <div class="td w30p">
+                          <span>보너스지급일</span
+                          ><span>2022.12.12.00:00:00</span>
+                        </div>
+                        <div class="td w20p">
+                          <span>추천인</span><span>idididid</span>
+                        </div>
+                        <div class="td w20p">
+                          <span>지급횟차</span><span>13</span>
+                        </div>
+                        <div class="td w20p">
+                          <span>지급비율</span><span>20</span>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="paging">
+                    <ul name="paging"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w50p left">
+              <div class="card">
+                <div class="title">
+                  <h5>우측실적</h5>
+                </div>
+                <div class="cont">
+                  <div class="tablebox">
+                    <div class="theadbox">
+                      <div class="d-flex">
+                        <div class="th w10p">No.</div>
+                        <div class="th w30p">매출일</div>
+                        <div class="th w20p">매출자</div>
+                        <div class="th w20p">PV</div>
+                        <div class="th w20p">적용일</div>
+                      </div>
+                    </div>
+                    <div class="tbodybox" id="Right_Siljuk">
+                      <!-- <div class="d-flex tr">
+                        <div class="td w10p">
+                          <span>No.</span><span>1</span>
+                        </div>
+                        <div class="td w30p">
+                          <span>보너스지급일</span
+                          ><span>2022.12.12.00:00:00</span>
+                        </div>
+                        <div class="td w20p">
+                          <span>추천인</span><span>idididid</span>
+                        </div>
+                        <div class="td w20p">
+                          <span>지급횟차</span><span>13</span>
+                        </div>
+                        <div class="td w20p">
+                          <span>지급비율</span><span>20</span>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="paging">
+                    <ul name="paging"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="title">
+              <h5>통합보너스 지급내역</h5>
+            </div>
+            <div class="cont">
+              <div class="tablebox">
+                <div class="theadbox">
+                  <div class="d-flex">
+                    <div class="th w05p">No.</div>
+                    <div class="th w25p">보너스지급일</div>
+                    <div class="th w30p">추천인</div>
+                    <div class="th w20p">지급횟차</div>
+                    <div class="th w20p">지급비율</div>
+                    <div class="th w20p">총매출</div>
+                    <div class="th w20p">총지급액</div>
+                    <div class="th w20p">배당보너스</div>
+                    <div class="th w20p">추천보너스</div>
+                    <div class="th w20p">지점보너스</div>
+                  </div>
+                </div>
+                <div class="tbodybox" id="noticeList"></div>
+              </div>
+              <div class="paging">
+                <ul name="paging"></ul>
+              </div>
+            </div>
+          </div>
+
+          <%include ./include/footer%>
+        </div>
+        <!-- content end -->
+      </div>
+      <!-- rightbox end -->
+    </div>
+  </body>
+</html>
+
+<script src="include/js/cur.js"></script>
+<script>
+  let nowPages = 1;
+  let pageRange = 5;
+  let currentPage = 1;
+  let pageLevel = 0;
+  let totalPage = 0;
+
+  const D_UID = '<%=D_UID%>';
+  $(document).ready(function () {
+    init();
+    getList();
+    get_LeftSiljuk();
+    get_RightSiljuk();
+  });
+
+  async function init() {
+    const r = await api.commonApi('/getMyDash');
+    commonLib.bindValue(r.data);
+    $('#MY_CHULJA_TEXT').prepend(r.data.MY_CHULJA);
+    $('#D_ALLAMT_TEXT').prepend(r.data.D_ALLAMT);
+    $('#D_RATE_TEXT').prepend(r.data.D_RATE);
+    $('#MS_BS1_TEXT').prepend(r.data.MS_BS1);
+    $('#MS_BS2_TEXT').prepend(r.data.MS_BS3);
+    $('#MS_BS3_TEXT').prepend(r.data.MS_BS2);
+    $('#MY_ALLOUTAMT_TEXT').prepend(r.data.MY_ALLOUTAMT);
+    $('#BS1_TEXT').prepend(r.data.BS1);
+    $('#BS2_TEXT').prepend(r.data.BS2);
+    $('#D_UID').html(D_UID);
+  }
+
+  function getList() {
+    const param = {};
+    param['ALL_PAGING'] = '100';
+    param['CNT'] = 'true';
+    param['CUR_PAGING'] = currentPage + '';
+    param['PAGING_NO'] = '10';
+    param['MY_NOTICE'] = '0';
+    api.listApi('/my_summry', param).then(r => {
+      for (let i = 0; i < r.data.length; i++) {
+        const board = r.data[i];
+        let innerHtml = '';
+        innerHtml += '<div class="d-flex tr">';
+        innerHtml +=
+          '<div class="td w05p"><span>No.</span><span>' +
+          board.ROWNUMBER +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w25p"><span>' +
+          LANG['LANG57'] +
+          '</span><span>' +
+          board.D_DATE +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w30p"><span>' +
+          LANG['LANG58'] +
+          '</span><span>' +
+          board.PCNT +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG59'] +
+          '</span><span>' +
+          board.P_PAYNUM_N +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          board.RATE +
+          ' %</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          board.SALE +
+          ' </span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          board.ALLPAY +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          board.BS1 +
+          ' </span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          board.BS2 +
+          ' </span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          board.BS3 +
+          ' </span></div>';
+        innerHtml += '</div>';
+        $('#noticeList').append(innerHtml);
+      }
+      let innerHtml = '';
+      innerHtml += '<li onclick="btnPage(\'bef\')"><a><</a></li>';
+      $('ul[name=paging]').empty();
+      for (var i = 1; i <= nowPages; i++) {
+        if (currentPage == i) {
+          innerHtml +=
+            '<li onclick="movePage(' +
+            i +
+            ')"> <a class="active">' +
+            (pageLevel * 5 + i) +
+            '</a> </li>';
+        } else {
+          innerHtml +=
+            '<li onclick="movePage(' +
+            i +
+            ')"> <a>' +
+            (pageLevel * 5 + i) +
+            '</a> </li>';
+        }
+      }
+      innerHtml += ' <li onclick="btnPage(\'next\')"><a>></a></li>';
+      $('ul[name=paging]').append(innerHtml);
+    });
+  }
+  function get_LeftSiljuk() {
+    const param = {};
+    param['ALL_PAGING'] = '100';
+    param['CNT'] = 'true';
+    param['CUR_PAGING'] = currentPage + '';
+    param['PAGING_NO'] = '10';
+    param['MY_NOTICE'] = '0';
+    api.listApi('/my_LeftSilJuk', param).then(r => {
+      for (let i = 0; i < r.data.length; i++) {
+        const board = r.data[i];
+        let innerHtml = '';
+        innerHtml += '<div class="d-flex tr">';
+        innerHtml +=
+          '<div class="td w05p"><span>No.</span><span>' +
+          board.ROWNUMBER +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w25p"><span>' +
+          LANG['LANG57'] +
+          '</span><span>' +
+          board.D_DATE +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w30p"><span>' +
+          LANG['LANG58'] +
+          '</span><span>' +
+          board.PCNT +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG59'] +
+          '</span><span>' +
+          board.P_PAYNUM_N +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          board.RATE.toFixed(2) +
+          ' %</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          commonLib.comma(board.SALE) +
+          ' </span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          commonLib.comma(board.ALLPAY) +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          commonLib.comma(board.BS1) +
+          ' </span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          commonLib.comma(board.BS2) +
+          ' </span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          commonLib.comma(board.BS3) +
+          ' </span></div>';
+        innerHtml += '</div>';
+        $('#Left_Siljuk').append(innerHtml);
+      }
+      let innerHtml = '';
+      innerHtml += '<li onclick="btnPage(\'bef\')"><a><</a></li>';
+      $('ul[name=paging]').empty();
+
+      for (var i = 1; i <= nowPages; i++) {
+        if (currentPage == i) {
+          innerHtml +=
+            '<li onclick="movePage(' +
+            i +
+            ')"> <a class="active">' +
+            (pageLevel * 5 + i) +
+            '</a> </li>';
+        } else {
+          innerHtml +=
+            '<li onclick="movePage(' +
+            i +
+            ')"> <a>' +
+            (pageLevel * 5 + i) +
+            '</a> </li>';
+        }
+      }
+      innerHtml += ' <li onclick="btnPage(\'next\')"><a>></a></li>';
+      $('ul[name=paging]').append(innerHtml);
+    });
+  }
+  function get_RightSiljuk() {
+    const param = {};
+    param['ALL_PAGING'] = '100';
+    param['CNT'] = 'true';
+    param['CUR_PAGING'] = currentPage + '';
+    param['PAGING_NO'] = '10';
+    param['MY_NOTICE'] = '0';
+    api.listApi('/my_RightSilJuk', param).then(r => {
+      for (let i = 0; i < r.data.length; i++) {
+        const board = r.data[i];
+        let innerHtml = '';
+        innerHtml += '<div class="d-flex tr">';
+        innerHtml +=
+          '<div class="td w05p"><span>No.</span><span>' +
+          board.ROWNUMBER +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w25p"><span>' +
+          LANG['LANG57'] +
+          '</span><span>' +
+          board.D_DATE +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w30p"><span>' +
+          LANG['LANG58'] +
+          '</span><span>' +
+          board.PCNT +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG59'] +
+          '</span><span>' +
+          board.P_PAYNUM_N +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          board.RATE.toFixed(2) +
+          ' %</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          commonLib.comma(board.SALE) +
+          ' </span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          commonLib.comma(board.ALLPAY) +
+          '</span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          commonLib.comma(board.BS1) +
+          ' </span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          commonLib.comma(board.BS2) +
+          ' </span></div>';
+        innerHtml +=
+          '<div class="td w20p"><span>' +
+          LANG['LANG60'] +
+          '</span><span>' +
+          commonLib.comma(board.BS3) +
+          ' </span></div>';
+        innerHtml += '</div>';
+        $('#Right_Siljuk').append(innerHtml);
+      }
+      let innerHtml = '';
+      innerHtml += '<li onclick="btnPage(\'bef\')"><a><</a></li>';
+      $('ul[name=paging]').empty();
+
+      for (var i = 1; i <= nowPages; i++) {
+        if (currentPage == i) {
+          innerHtml +=
+            '<li onclick="movePage(' +
+            i +
+            ')"> <a class="active">' +
+            (pageLevel * 5 + i) +
+            '</a> </li>';
+        } else {
+          innerHtml +=
+            '<li onclick="movePage(' +
+            i +
+            ')"> <a>' +
+            (pageLevel * 5 + i) +
+            '</a> </li>';
+        }
+      }
+      innerHtml += ' <li onclick="btnPage(\'next\')"><a>></a></li>';
+      $('ul[name=paging]').append(innerHtml);
+    });
+  }
+
+  function movePage(page) {
+    currentPage = pageLevel * 5 + page;
+    getList();
+  }
+
+  function btnPage(pos) {
+    if (pos == 'bef' && currentPage > 1) {
+      currentPage--;
+    } else if (pos == 'next' && currentPage < totalPage) {
+      currentPage++;
+    }
+    getList();
+  }
+</script>

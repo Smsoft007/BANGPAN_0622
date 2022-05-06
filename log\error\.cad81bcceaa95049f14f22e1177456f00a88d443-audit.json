@@ -1,0 +1,64 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "log\\error\\.cad81bcceaa95049f14f22e1177456f00a88d443-audit.json",
+    "files": [
+        {
+            "date": 1638938489311,
+            "name": "log\\error\\2021-12-08.error.log",
+            "hash": "9a2a0daee97014737ec84e4f69300f36"
+        },
+        {
+            "date": 1639006376037,
+            "name": "log\\error\\2021-12-09.error.log",
+            "hash": "5f9640d01cf6033929f05e2841e4ed72"
+        },
+        {
+            "date": 1639226049787,
+            "name": "log\\error\\2021-12-11.error.log",
+            "hash": "6c7ee2437f1a51693add6390aef7c0c3"
+        },
+        {
+            "date": 1640018494469,
+            "name": "log\\error\\2021-12-21.error.log",
+            "hash": "46341bdfd0a8ec5f586c2f41514d9280"
+        },
+        {
+            "date": 1640132744305,
+            "name": "log\\error\\2021-12-22.error.log",
+            "hash": "814ca04da26c60b051191214d15f1970"
+        },
+        {
+            "date": 1640662456337,
+            "name": "log\\error\\2021-12-28.error.log",
+            "hash": "6e87cad4b6387c0892f790e1d4b2e688"
+        },
+        {
+            "date": 1641789736080,
+            "name": "log\\error\\2022-01-10.error.log",
+            "hash": "5d3f2cda733a40db76d123be34ec8ceb"
+        },
+        {
+            "date": 1649873023295,
+            "name": "log/error/2022-04-14.error.log",
+            "hash": "28de4c9a1b6582c773c989d2c42e4817"
+        },
+        {
+            "date": 1650000482211,
+            "name": "log/error/2022-04-15.error.log",
+            "hash": "86b17c44cc44f3c6ce69324986579114"
+        },
+        {
+            "date": 1650101042517,
+            "name": "log/error/2022-04-16.error.log",
+            "hash": "522d048a2e37e41cebfa987bfe75be18"
+        },
+        {
+            "date": 1650290181107,
+            "name": "log/error/2022-04-18.error.log",
+            "hash": "2a7bd0d159c553f53713b268fdf7cd57"
+        }
+    ]
+}

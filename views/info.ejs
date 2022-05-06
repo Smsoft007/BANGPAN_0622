@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+
+  <%include ./include/head%>
+<body>
+
+<div class="wrap">
+
+  <%include ./include/leftbox%>
+  <div class="rightbox">
+
+    <%include ./include/header%>
+
+    <div class="content">
+
+      <div class="row mrow infobox">
+        <div class="w50p left">
+          <div class="card">
+            <div class="title">
+              <h5><%=LANG['LANG43']%></h5>
+            </div>
+            <div class="cont">
+              <div class="inputbox">
+                <select class="select" id="D_COUNTRY">
+                </select>
+              </div>
+              <div class="inputbox">
+                <input type="text" class="input" id="D_UID" value="" placeholder="ID" readonly>
+              </div>
+              <div class="inputbox">
+                <input type="text" class="input" id="D_NAME_H" value="" placeholder="<%=LANG['LANG44']%>">
+              </div>
+              <div class="inputbox">
+                <input type="email" class="input" id="D_EMAIL" value="" placeholder="<%=LANG['LANG45']%>">
+              </div>
+              <div class="inputbox">
+                <input type="password" class="input" id="D_PASS2" value="" placeholder="<%=LANG['LANG46']%>">
+              </div>
+              <!-- <div class="inputbox">
+                <input type="number" class="input" id="idid" value="" placeholder="phone number">
+              </div> -->
+              <!-- <div class="inputbox phoneinputbox">
+                <div class="row">
+                  <div class="w20p left">
+                    <select class="select" id="idid">
+                      <option value="">국가</option>
+                      <option value="">한국(+82)</option>
+                      <option value="">中国(+86)</option>
+                      <option value="">日本(+81)</option>
+                      <option value="">UNITED STATES(+1)</option>
+                    </select>
+                  </div>
+                  <div class="w80p left">
+                    <div class="inputbtnbox">
+                      <input type="number" class="input" id="idid" value="" placeholder="phone number">
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <a class="btn btn-block btn-primary btn-radius mb-10" onclick="changeInfo()"><%=LANG['LANG47']%></a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="title">
+              <h5><%=LANG['LANG48']%></h5>
+            </div>
+            <div class="cont">
+              <div class="inputbox">
+                <input type="password" class="input" id="CUR_PW" placeholder="Password">
+              </div>
+              <div class="inputbox">
+                <input type="password" class="input" id="NEW_PW" placeholder="New Password">
+                <p class="tx-guide"><%=LANG['LANG10']%></p>
+              </div>
+              <div class="inputbox">
+                <input type="password" class="input" id="NEW_PW_CH" onkeyup="watchPwd()" placeholder="Confirm New Password">
+                <p class="tx-error" id= "checkPWD" style="display:none"><%=LANG['LANG11']%></p>
+              </div>
+              <a class="btn btn-block btn-primary btn-radius mb-10" onclick="changePwd()"><%=LANG['LANG47']%></a>
+            </div>
+          </div>
+        </div>
+        <div class="w50p left">
+          <div class="card">
+            <div class="title">
+              <h5><%=LANG['LANG49']%></h5>
+            </div>
+            <div class="cont">
+              <div class="inputbox">
+                <select class="select" id="B_CODE_LIST">
+                </select>
+              </div>
+              <div class="inputbox">
+                <input type="text" class="input" id="idid" value="" placeholder="<%=LANG['LANG15']%>">
+              </div>
+              <div class="inputbox">
+                <input type="text" class="input" id="idid" value="" placeholder="<%=LANG['LANG16']%>">
+              </div>
+              <div class="inputbox phoneinputbox">
+                <!-- <div class="row">
+                  <div class="w20p left">
+                    <select class="select" id="idid">
+                      <option value="">국가</option>
+                      <option value="">한국(+82)</option>
+                      <option value="">中国(+86)</option>
+                      <option value="">日本(+81)</option>
+                      <option value="">UNITED STATES(+1)</option>
+                    </select>
+                  </div>
+                  <div class="w80p left">
+                    <div class="inputbtnbox">
+                      <input type="number" class="input" id="idid" value="" placeholder="phone number">
+                      <a href="#" class="btn btn-primary"><%=LANG['LANG42']%></a>
+                    </div>
+                  </div>
+                </div> -->
+              <!-- </div> -->
+              <div class="inputbox">
+                <div class="inputbtnbox">
+                  <input type="text" class="input" id="D_IDNO" maxlength="13" value="" placeholder="<%=LANG['LANG126']%>!">
+                  <p class="tx-red tx-bold"><%=LANG['LANG125']%></p>
+                </div>
+              </div>
+              <a class="btn btn-block btn-primary btn-radius mb-10" onclick="changeDIDNO()"><%=LANG['LANG50']%></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <%include ./include/footer%>
+
+    </div><!-- content end -->
+
+  </div><!-- rightbox end -->
+
+</div>
+
+
+</body>
+
+
+</html>
+
+
+<script src="include/js/cur.js"></script>
+<script>
+  const D_UID = "<%=D_UID%>"
+  let passwordCheck = false;
+
+  $(document).ready(function () {
+    init();
+  });
+
+  async function init() {
+    const countryList = await api.listApi("/getCountry")
+    countryList.data.forEach(element => {
+      $("#D_COUNTRY").append(`<option value="${element.Q_CODE}">${element.Q_KNAME}</option>`)
+    })
+
+    const bankList = await api.listApi("/getBankList")
+    bankList.data.forEach(el => $("#B_CODE_LIST").append('<option value="' + el.B_CODE + '">' + el.B_NAME + '</option>'))
+
+    const userInfo = await api.commonApi("/userinfo")
+    $("#D_COUNTRY").val(userInfo.data.D_CONTRY_CODE)
+    userInfo.data['D_UID'] = D_UID
+    commonLib.bindValue(userInfo.data)
+
+    const myDash = await api.commonApi("/getMyDash")
+    commonLib.bindValue(myDash.data)
+  }
+
+  async function changeInfo() {
+    const param = {}
+    param['D_PASS2'] = $("#D_PASS2").val()
+    param['D_COUNTRY'] = $("#D_COUNTRY").val()
+    param['D_NAME'] = $("#D_NAME_H").val()
+    param['D_EMAIL'] = $("#D_EMAIL").val()
+
+    if (commonLib.nullCheck(param)) {
+      alert("<%=LANG['LANG05']%>")
+      return
+    }
+    const r = await api.commonApi("/updateUserInfo", param)
+    if (r.data.RESULT === 0) {
+      alert("<%=LANG['LANG51']%>")
+      location.reload()
+    } else if (r.data.RESULT === 1) {
+      alert("<%=LANG['LANG52']%>")
+    } else {
+      alert("<%=LANG['LANG53']%>")
+    }
+  }
+
+  async function changeDIDNO() {
+    const param = {}
+    param['DIDNO'] = $("#D_IDNO").val()
+    
+    const r = await api.commonApi("/setDidno", param)
+    if (r.data.RESULT === 0) {
+      alert("<%=LANG['LANG51']%>")
+      location.reload()
+    } else if (r.data.RESULT === 1) {
+      alert("<%=LANG['LANG11']%>")
+    } else {
+      alert("<%=LANG['LANG53']%>")
+    }
+  }
+
+
+  async function changePwd() {
+    const param = {}
+    param['CUR_PW'] = $("#CUR_PW").val()
+    param['NEW_PW'] = $("#NEW_PW").val()
+    const r = await api.commonApi("/updatePass2", param)
+    if (r.data.RESULT === 0) {
+      alert("<%=LANG['LANG51']%>")
+      location.reload()
+    } else if (r.data.RESULT === 1) {
+      alert("<%=LANG['LANG11']%>")
+    } else {
+      alert("<%=LANG['LANG53']%>")
+    }
+  }
+  function watchPwd() {
+    passwordCheck = ($("#NEW_PW_CH").val() !== $("#NEW_PW").val())
+    $('#checkPWD').css("display", (passwordCheck) ? "block" : "none");
+  }
+</script>
